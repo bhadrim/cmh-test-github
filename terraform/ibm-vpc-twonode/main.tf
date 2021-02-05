@@ -3,7 +3,7 @@ provider "ibm" {
 }
 
 data "ibm_is_image" "ds_image" {
-  name = var.image_name
+  name = "${var.image_name}"
 }
 
 resource "random_integer" "key" {
