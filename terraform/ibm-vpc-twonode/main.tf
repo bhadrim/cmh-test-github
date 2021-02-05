@@ -16,7 +16,6 @@ resource "ibm_is_subnet" "test_subnet" {
   name            = "test-subnet-${random_integer.key.result}"
   vpc             = "${ibm_is_vpc.test_vpc.id}"
   zone            = "${var.zone}"
-  ipv4_cidr_block = "10.241.0.0/24"
 }
 
 resource "ibm_is_ssh_key" "test_sshkey" {
