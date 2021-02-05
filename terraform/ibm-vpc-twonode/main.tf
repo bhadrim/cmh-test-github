@@ -2,6 +2,10 @@ provider "ibm" {
   region = "${var.region}"
 }
 
+data "ibm_is_image" "ds_image" {
+  name = var.image_name
+}
+
 resource "random_integer" "key" {
   min     = 1
   max     = 50000
@@ -27,7 +31,7 @@ resource "ibm_is_ssh_key" "test_sshkey" {
 ## Web server VSI
 resource "ibm_is_instance" "web-server" {
   name    = "web-server-vsi-${random_integer.key.result}"
-  image   = "${var.image_id}"
+  image   = "${data.ibm_is_image.ds_image.id}"
   profile = "${var.profile}"
 
   primary_network_interface {
