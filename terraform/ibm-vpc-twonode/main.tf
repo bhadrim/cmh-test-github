@@ -16,7 +16,7 @@ resource "ibm_is_subnet" "test_subnet" {
   name            = "test-subnet-${random_integer.key.result}"
   vpc             = "${ibm_is_vpc.test_vpc.id}"
   zone            = "${var.zone}"
-  total_ipv4_address_count = 1
+  total_ipv4_address_count = 8
 }
 
 resource "ibm_is_ssh_key" "test_sshkey" {
